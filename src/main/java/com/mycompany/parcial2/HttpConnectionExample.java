@@ -19,6 +19,9 @@ public class HttpConnectionExample {
 
     private static final String USER_AGENT = "Mozilla/5.0";
 
+    public HttpConnectionExample(){
+    }
+
 
     public static String Connection(String arg) throws IOException {
         String url = arg;
