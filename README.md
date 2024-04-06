@@ -83,6 +83,7 @@ java -cp "target/classes;target/dependency/*" com.mycompany.parcial2.MathService
    ```sh
 java -cp "target/classes;target/dependency/*" com.mycompany.parcial2.ProxyService http://localhost:4567 http://localhost:4567
    ```
+   
 ![img_7.png](img/img_7.png)
 
 Luego de esto ya podremos ingresar mediante el browser al localhost con el siguiente link y ejecutar la aplicación
