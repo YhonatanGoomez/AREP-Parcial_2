@@ -64,25 +64,25 @@ Para más detalles sobre cómo cada componente está configurado y desplegado, p
 Una serie de pasos para ejecutar el entorno de desarrollo:
 
 1. Clonar el repositorio:
-   ```sh
+
    git clone https://github.com/YhonatanGoomez/AREP-Parcial_2.git
-   ```
+
 1. Navegar al directorio del proyecto y compilar con Maven:
-   ```sh
+ 
   cd /AREP-Parcial_2
 mvn compile
 mvn clean install
-   ```
+
 1. Ejecutaremos los servicios en dos terminales diferente de la siguiente forma:
-   ```sh
+
 java -cp "target/classes;target/dependency/*" com.mycompany.parcial2.MathService
-   ```
+
 ![img6.png](img/img6.png)
 
 1. Siguiente servicio:
-   ```sh
+
 java -cp "target/classes;target/dependency/*" com.mycompany.parcial2.ProxyService http://localhost:4567 http://localhost:4567
-   ```
+  
 
 ![img7.png](img/img7.png)
 
