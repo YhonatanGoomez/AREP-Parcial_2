@@ -9,22 +9,21 @@
         <h1>Linear Search</h1>
         <form action="/linear">
             <input type="text" id="list" name="list" value="list"><br><br>
-            <input type="text" id="value" name="value" value=""><br><br>
-            <input type="button" value="Submit" onclick="loadGetMsg()">
+            <input type="text" id="value" name="value" value="value"><br><br>
+            <input type="button" value="Submit" onclick="loadGetMsgLinear()">
         </form> 
         <div id="getrespmsg"></div>
 
         <script>
-            function loadGetMsg() {
-                let list = document.getElementById("list").value;
-                let value= document.getElementById("value").value;
-                const xhttp = new XMLHttpRequest();
-                xhttp.onload = function() {
-                    document.getElementById("getrespmsg").innerHTML =
-                    this.responseText;
-                }
-                xhttp.open("GET", "/linear?list=" + list + "&value=" + value);
-                xhttp.send();
+    function loadGetMsgLinear() {
+        let list = document.getElementById("list").value;
+        let value = document.getElementById("value").value;
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("getrespmsg").innerHTML = this.responseText;
+        }
+        xhttp.open("GET", "/linear?list=" + encodeURIComponent(list) + "&value=" + encodeURIComponent(value));
+        xhttp.send();
             }
         </script>
 
@@ -32,19 +31,18 @@
 <form action="/binaria">
     <input type="text" id="listbin" name="listbin" value="list"><br><br>
     <input type="text" id="valbin" name="valbin" value="value"><br><br>
-    <input type="button" value="Submit" onclick="loadGetMsg()">
+    <input type="button" value="Submit" onclick="loadGetMsgBinary()">
 </form> 
 <div id="getrespmsg"></div>
 <script>
-    function loadGetMsg() {
+    function loadGetMsgBinary() {
         let listbin = document.getElementById("listbin").value;
-        let valbin= document.getElementById("valbin").value;
+        let valbin = document.getElementById("valbin").value;
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
-            document.getElementById("getrespmsg").innerHTML =
-            this.responseText;
+            document.getElementById("getrespmsg").innerHTML = this.responseText;
         }
-        xhttp.open("GET", "/binaria?list=" + listbin + "&value=" + valbin);
+        xhttp.open("GET", "/binaria?list=" + encodeURIComponent(listbin) + "&value=" + encodeURIComponent(valbin));
         xhttp.send();
     }
 </script>
