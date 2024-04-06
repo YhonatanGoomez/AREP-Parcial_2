@@ -10,6 +10,8 @@ public class ProxyService {
         urluse[0]=args[0];
         urluse[1]=args[1];
         port(getPort());
+
+        
         get("/linear" , (req , res) -> {
             res.type("application/json");
             int n = Integer.parseInt(req.queryParams("value"));
