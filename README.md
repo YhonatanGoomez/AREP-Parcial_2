@@ -49,7 +49,7 @@ Esta estructura no solo mejora la robustez y el rendimiento del sistema, sino qu
 
 ## Diagrama de Arquitectura
 
-![img_15.png](img/img_15.png)
+![img15.png](img/img15.png)
 
 
 ## Escalabilidad y Alta Disponibilidad
@@ -77,35 +77,35 @@ mvn clean install
    ```sh
 java -cp "target/classes;target/dependency/*" com.mycompany.parcial2.MathService
    ```
-![img_6.png](img/img_6.png)
+![img6.png](img/img6.png)
 
 1. Siguiente servicio:
    ```sh
 java -cp "target/classes;target/dependency/*" com.mycompany.parcial2.ProxyService http://localhost:4567 http://localhost:4567
    ```
-   
-![img_7.png](img/img_7.png)
+
+![img7.png](img/img7.png)
 
 Luego de esto ya podremos ingresar mediante el browser al localhost con el siguiente link y ejecutar la aplicación
 
 `http://localhost:4500/index.html`
 
-![img_8.png](img/img_8.png)
+![img8.png](img/img8.png)
 
 En donde comprobaremos que funcione correctamente la aplicación, primero con la:
 #### Busqueda líneal
 Ingresaremos un lista en el primer campo y luego de esto el valor a buscar dentro de dicha lista y lo entregaremos en el formato solicitado, retornando la posición del valor buscado
-![img_9.png](img/img_9.png)
+![img9.png](img/img9.png)
 
 Además retornaremos el valor de "-1" cuando el elemento a buscar no se encuentre en la lista
-![img_12.png](img/img_12.png)
+![img12.png](img/img12.png)
 
 #### Busqueda binaria
 Ingresaremos un lista en el primer campo y luego de esto el valor a buscar dentro de dicha lista. Para este caso, se espera que el usuario ingrese una lísta ordenada de menor a mayor y nuevamente retornará la posición del valor ingresado si lo encuentra, de lo contrario, retornará un "-1"
 ##### Caso exitoso
-![img_10.png](img/img_10.png)
+![img10.png](img/img10.png)
 ##### Valor no encontrado
-![img_11.png](img/img_11.png)
+![img11.png](img/img11.png)
 
 Explicaremos brevemente la lógica detras de los servicios para observar su comportamiento:
 
@@ -118,28 +118,28 @@ Clase que representa el servicio de cálculo matemático. Contiene el método `m
 - `/linear`: Implementa la búsqueda lineal. Recibe `value` y `list` como parámetros, ejecuta la búsqueda lineal en la lista de enteros proporcionada y devuelve un JSON con los resultados.
 - `/binaria`: Implementa la búsqueda binaria. Funciona de manera similar al endpoint `/linear`, pero realiza una búsqueda binaria en una lista ordenada de enteros.
 
-![img_16.png](img/img_16.png)
-![img_17.png](img/img_17.png)
+![img16.png](img/img16.png)
+![img17.png](img/img17.png)
 
-![img_18.png](img/img_18.png)
-![img_19.png](img/img_19.png)
+![img18.png](img/img18.png)
+![img19.png](img/img19.png)
 
 ### ProxyService
 
 Actúa como intermediario y balanceador de carga utilizando un algoritmo de Round Robin para distribuir las solicitudes entre las instancias de `MathService`. Define los mismos endpoints que `MathService` y redirige las solicitudes a las instancias del servicio.
 
-![img_20.png](img/img_20.png)
+![img20.png](img/img20.png)
 
 ### HttpConnectionExample
 
 Encapsula la lógica para realizar conexiones HTTP a `MathService` desde `ProxyService`, maneja la respuesta y la devuelve al cliente.
 
-![img_21.png](img/img_21.png)
+![img21.png](img/img21.png)
 
 ### Interfaz de Usuario
 
 La interfaz web proporciona formularios para enviar solicitudes de búsqueda al `ProxyService`. Utiliza AJAX para realizar solicitudes asíncronas y mostrar los resultados en la misma página.
-![img_22.png](img/img_22.png)
+![img22.png](img/img22.png)
 
 
 #AWS
@@ -149,11 +149,11 @@ Ahora desplegaremos todo en Amazon AWS EC2, en donde desplegaremos 3 instancias:
 
 ### Reglas de seguridad
 Se establecen reglas de entrada y salida para permitir todo trafico
-![img_23.png](img/img_23.png)
+![img23.png](img/img23.png)
 
 Luego de esto, se crean las instancias y se ponen a correr
 
-![img_24.png](img/img_24.png)
+![img24.png](img/img24.png)
 
 ###Para todas las instancias:
 Instalaremos lo siguiente en todos los Amazon Linux
@@ -182,7 +182,7 @@ sudo yum install -y java-17-amazon-corretto-devel
 sudo yum install maven
 ```
 
-![img_2.png](img/img_2.png)
+![img2.png](img/img2.png)
 
 Clonamos y en el directorio ejecutamos el repositorio en todas las instancias
 
