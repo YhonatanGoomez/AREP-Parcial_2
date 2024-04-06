@@ -142,7 +142,7 @@ La interfaz web proporciona formularios para enviar solicitudes de búsqueda al 
 ![img22.png](img/img22.png)
 
 
-#AWS
+# AWS
 Ahora desplegaremos todo en Amazon AWS EC2, en donde desplegaremos 3 instancias: 
 - Dos para MathService
 - Una para ProxyService
@@ -155,7 +155,7 @@ Luego de esto, se crean las instancias y se ponen a correr
 
 ![img24.png](img/img24.png)
 
-###Para todas las instancias:
+### Para todas las instancias:
 Instalaremos lo siguiente en todos los Amazon Linux
 - Maven
 - Github
