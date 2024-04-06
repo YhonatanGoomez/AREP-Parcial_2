@@ -186,9 +186,40 @@ sudo yum install maven
 
 Clonamos y en el directorio ejecutamos el repositorio en todas las instancias
 
+En donde construiremos el proyecto y lo ejecutaremos en todas las instancias de la misma manera
+```bash
+mvn compile
+mvn clean install
+```
+
+![img26.png](img/img26.png)
+
+Ahora estaremos listos para ejecutar cada instancia creada, ambas MathService se ejecutaran con el siguiente comando
+```bash
+java -cp "target/classes;target/dependency/*" com.mycompany.parcial2.MathService
+```
+![img27.png](img/img27.png)
+
+En donde vemos que la instancia queda iniciada
+
+Y para la instacia de ProxyService ejecutaremos el siguiente comando
+```bash
+java -cp "target/classes;target/dependency/*" com.mycompany.parcial2.ProxyService http://ec2-54-161-68-145.compute-1.amazonaws.com:4567 http://ec2-54-161-124-105.compute-1.amazonaws.com:4567
+```
+
+![img28.png](img/img28.png)
+![img29.png](img/img29.png)
+![img30.png](img/img30.png)
+
+Para asi poder que el Proxy distribuya las cargas a ambos MathService.
 
 
+Ahora procedemos en el browser mediante la direccion IPV4 del DNS del ProxyService y el puerto especificado accederemos a la interfaz de usuario definida
+![img31.png](img/img31.png)
+![img32.png](img/img32.png)
 
+En el video podremos ver mas a detalle el funcionamiento `Seccion: Pruebas y Despliegue en AWS`
+ 
 ## Built With
 - **Java** - Lenguaje con el cual funciona la mayor parte del proyecto
 - **Html** - Usado para la sección del cliente
@@ -208,11 +239,7 @@ Clonamos y en el directorio ejecutamos el repositorio en todas las instancias
 
 
 
-## Acknowledgments
 
-- Consejo a cualquiera cuyo código fue usado
-- Inspiración
-- etc
+## Pruebas y Despliegue en AWS
 
-
-
+https://youtu.be/5p3uJBGYK3c
