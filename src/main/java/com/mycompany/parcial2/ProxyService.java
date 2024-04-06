@@ -13,15 +13,16 @@ public class ProxyService {
         get("/linear" , (req , res) -> {
             res.type("application/json");
             int n = Integer.parseInt(req.queryParams("value"));
-            return HttpConnectionExample.Connection(whoservice() + "/linear/values?=" + n);
+            String list = req.queryParams("list");
+            return HttpConnectionExample.Connection(whoservice() + "/linear?list=" + list + "&value="  + n);
 
         });
 
         get("/binaria" , (req , res) -> {
             res.type("application/json");
             int n = Integer.parseInt(req.queryParams("value"));
-            return HttpConnectionExample.Connection(whoservice() + "/binaria/values?=" + n);
-
+            String list = req.queryParams("list");
+            return HttpConnectionExample.Connection(whoservice() + "/binaria?list=" + list + "&value="  + n);
         });
         
     }

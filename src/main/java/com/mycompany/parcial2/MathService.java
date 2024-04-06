@@ -14,56 +14,64 @@ public class MathService {
         get("/linear", (req , res) -> 
         {
             res.type("application/json");
-            int i = Integer.parseInt(req.queryParams("value"));
-            String result = "Hola";
+            int n = Integer.parseInt(req.queryParams("value"));
+            String listStr = req.queryParams("list");
+            String[] listArray = listStr.split(",");
+            int[] intList = new int[listArray.length];
+            for (int i = 0; i < listArray.length; i++) {
+                intList[i] = Integer.parseInt(listArray[i]);
+            }
+            int resp = linearSearch(intList, n);
+            String result = String.format("{\"operation\":\"linearSearch\",\"inputlist\":\"%s\",\"value\":%d,\"output\":%d}", listStr, n, resp);
             return result;
         });
 
         get("/binaria", (req , res) -> 
         {
             res.type("application/json");
-            int i = Integer.parseInt(req.queryParams("value"));
-            String result = "Hola";
-            return result;
+            int n = Integer.parseInt(req.queryParams("value"));
+            String listStr = req.queryParams("list");
+            String[] listStrArray = listStr.split(",");
+            int[] list = new int[listStrArray.length];
+            for (int i = 0; i < listStrArray.length; i++) {
+                list[i] = Integer.parseInt(listStrArray[i]);
+            }
+            int resp = bbinaria(list, 0, list.length - 1, n);
+            String respuesta = String.format("{\"operation\":\"BinarySearch\",\"inputlist\":\"%s\",\"value\":%d,\"output\":%d}", listStr, n, resp);
+            return respuesta;
+
         });
-
-
-
 
     }
 
-    public static int blinear(){
-        String[] list={"Hola","como"};
-        String busqueda="Hola";
-        int respuesta = 0;
-        for (int i=0; i<=list.length;i++){
+
+    public static int linearSearch(int[] list, int busqueda){
+        for (int i = 0; i < list.length; i++){
             if (list[i] == busqueda){
-                respuesta = i;
-            }
-            else{
-                respuesta = -1;
+                return i; 
             }
         }
-        return respuesta;
+        return -1; 
+    }
+
+
+    public static int bbinaria(int[] list, int left, int right, int x) {
+        if (right >= left) {
+            int mid = left + (right - left) / 2;
+
+            if (list[mid] == x)
+                return mid;
+
+            if (list[mid] > x)
+                return bbinaria(list, left, mid - 1, x);
+
+            return bbinaria(list, mid + 1, right, x);
+        }
+        return -1;
     }
 
     
-    public static int bbinaria(){
-        int[] list={1, 2, 3, 4};
-        int busqueda = 3;
-        int dividir = 0;
-        while (list.length>0){
-            dividir = list.length/2;
-            if(list[dividir]==busqueda){
-                return dividir;
-            }
-        
-        }
 
-        
-        
-        return -1;
-    }
 
     private static int getPort() {
         if (System.getenv("PORT") != null) {

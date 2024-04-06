@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Form Example</title>
+        <title>Types of Search</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Form with GET</h1>
-        <form action="/hello">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" value="John"><br><br>
+        <h1>Linear Search</h1>
+        <form action="/linear">
+            <input type="text" id="list" name="list" value="list"><br><br>
+            <input type="text" id="value" name="value" value=""><br><br>
             <input type="button" value="Submit" onclick="loadGetMsg()">
         </form> 
         <div id="getrespmsg"></div>
 
         <script>
             function loadGetMsg() {
-                let nameVar = document.getElementById("name").value;
+                let list = document.getElementById("list").value;
+                let value= document.getElementById("value").value;
                 const xhttp = new XMLHttpRequest();
                 xhttp.onload = function() {
                     document.getElementById("getrespmsg").innerHTML =
                     this.responseText;
                 }
-                xhttp.open("GET", "/hello?name="+nameVar);
+                xhttp.open("GET", "/linear?list=" + list + "&value=" + value);
                 xhttp.send();
             }
         </script>
 
-        <h1>Form with POST</h1>
-        <form action="/hellopost">
-            <label for="postname">Name:</label><br>
-            <input type="text" id="postname" name="name" value="John"><br><br>
-            <input type="button" value="Submit" onclick="loadPostMsg(postname)">
-        </form>
-        
-        <div id="postrespmsg"></div>
-        
-        <script>
-            function loadPostMsg(name){
-                let url = "/hellopost?name=" + name.value;
+<h1>Binary Search</h1>
+<form action="/binaria">
+    <input type="text" id="listbin" name="listbin" value="list"><br><br>
+    <input type="text" id="valbin" name="valbin" value="value"><br><br>
+    <input type="button" value="Submit" onclick="loadGetMsg()">
+</form> 
+<div id="getrespmsg"></div>
+<script>
+    function loadGetMsg() {
+        let listbin = document.getElementById("listbin").value;
+        let valbin= document.getElementById("valbin").value;
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("getrespmsg").innerHTML =
+            this.responseText;
+        }
+        xhttp.open("GET", "/binaria?list=" + listbin + "&value=" + valbin);
+        xhttp.send();
+    }
+</script>
 
-                fetch (url, {method: 'POST'})
-                    .then(x => x.text())
-                    .then(y => document.getElementById("postrespmsg").innerHTML = y);
-            }
-        </script>
     </body>
 </html>
